@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worker Care Alwis - Aapka Saathi, Har Kadam Par</title>
+<style>
+  :root{
+    --navy:#0b1e3d;
+    --orange:#f5821f;
+    --green:#25a955;
+    --lightblue:#eaf3ff;
+    --gray:#6b7280;
+    --border:#e5e7eb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:#1f2937;background:#fff;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+  /* Top bar */
+  .topbar{background:var(--navy);color:#fff;font-size:12px;padding:6px 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+  .topbar-left span{margin-right:16px;opacity:.85;}
+  .topbar-right span{margin-left:14px;opacity:.85;}
+
+  /* Header */
+  header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+  .navwrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;color:var(--navy);}
+  .logo .care{color:var(--orange);}
+  .logo small{display:block;font-size:9px;color:var(--gray);font-weight:500;letter-spacing:1px;}
+  nav ul{list-style:none;display:flex;gap:26px;font-size:14px;font-weight:600;color:var(--navy);}
+  nav ul li a:hover{color:var(--orange);}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .btn{padding:9px 18px;border-radius:6px;font-size:13px;font-weight:700;border:none;cursor:pointer;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-outline{border:1.5px solid var(--navy);color:var(--navy);background:#fff;}
+
+  /* Hero */
+  .hero{background:var(--navy);color:#fff;padding:50px 0;}
+  .hero-flex{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+  .hero-text{flex:1;min-width:300px;}
+  .hero-text h1{font-size:38px;line-height:1.25;font-weight:800;}
+  .hero-text h1 span{color:var(--orange);}
+  .hero-text p{margin-top:14px;color:#cbd5e1;font-size:15px;max-width:480px;}
+  .hero-buttons{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-lg{padding:13px 26px;border-radius:8px;font-size:15px;}
+  .hero-image{flex:1;min-width:300px;}
+  .hero-image img{border-radius:12px;}
+
+  /* Services */
+  .section{padding:60px 0;}
+  .section-title{text-align:center;font-size:28px;font-weight:800;color:var(--navy);margin-bottom:36px;}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-card{border:1px solid var(--border);border-radius:12px;padding:24px 16px;text-align:center;transition:.2s;}
+  .service-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-3px);}
+  .service-icon{width:56px;height:56px;border-radius:50%;background:var(--lightblue);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;}
+  .service-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .service-card p{font-size:12.5px;color:var(--gray);}
+
+  /* Pricing */
+  .pricing{background:#f8fafc;}
+  .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .price-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:26px 20px;text-align:center;position:relative;}
+  .price-card.popular{border:2px solid var(--orange);transform:scale(1.04);}
+  .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
+  .plan-name{font-size:13px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;}
+  .plan-price{font-size:34px;font-weight:800;color:var(--navy);margin:10px 0;}
+  .plan-price span{font-size:14px;font-weight:500;color:var(--gray);}
+  .plan-features{list-style:none;text-align:left;margin:18px 0;font-size:13px;color:#374151;}
+  .plan-features li{padding:6px 0;border-bottom:1px dashed var(--border);}
+  .plan-features li:before{content:"✓ ";color:var(--green);font-weight:700;}
+
+  /* Contact strip */
+  .contact-strip{background:var(--navy);color:#fff;padding:30px 0;}
+  .contact-flex{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .contact-flex h3{font-size:20px;}
+  .contact-flex .btn{background:var(--green);}
+
+  /* Footer */
+  footer{background:#0a1830;color:#94a3b8;padding:50px 0 20px;font-size:13px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px;}
+  .footer-grid h4{color:#fff;font-size:14px;margin-bottom:14px;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid ul li{margin-bottom:8px;}
+  .footer-grid ul li a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid #1e2c47;padding-top:16px;text-align:center;font-size:12px;}
+
+  @media(max-width:900px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .pricing-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:repeat(2,1fr);}
+    nav ul{display:none;}
+    .hero-text h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📞 Helpline: +971 62 123 4567</span>
+      <span>✉️ support@workercare.ae</span>
+    </div>
+    <div class="topbar-right">
+      <span>English</span>
+      <span>हिंदी</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container navwrap">
+    <div class="logo">
+      🛡️ WORKER<span class="care">CARE</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Plans</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-outline">Helpline</a>
+      <a href="#" class="btn btn-primary">Join Now</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container hero-flex">
+    <div class="hero-text">
+      <h1>Aapka Saathi,<br><span>Har Kadam Par.</span></h1>
+      <p>Paisa, Dawai, Dastavez — hum har kadam par aapke saath hain. Poori jaankari, madad aur samadhan ek jagah.</p>
+      <div class="hero-buttons">
+        <a href="#pricing" class="btn btn-primary btn-lg">Plan Dekhein</a>
+        <a href="#" class="btn btn-outline btn-lg" style="border-color:#fff;color:#fff;">▶ Video Dekhein</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=700&q=80" alt="Workers">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <h2 class="section-title">Hum Kya-Kya Sahayata Dete Hain</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">💰</div><h3>Bimari Emergency</h3><p>Turant medical madad aur sahayata</p></div>
+      <div class="service-card"><div class="service-icon">⚖️</div><h3>Kanooni Salah</h3><p>Free legal consultation seva</p></div>
+      <div class="service-card"><div class="service-icon">📄</div><h3>Dastavez Seva</h3><p>Documents banwane mein madad</p></div>
+      <div class="service-card"><div class="service-icon">🏦</div><h3>Bank Khata Seva</h3><p>Bank account khulwane mein sahayata</p></div>
+      <div class="service-card"><div class="service-icon">🚑</div><h3>Emergency Sahayata</h3><p>24x7 emergency response team</p></div>
+      <div class="service-card"><div class="service-icon">📞</div><h3>Helpline Support</h3><p>Free helpline har samay uplabdh</p></div>
+      <div class="service-card"><div class="service-icon">🎓</div><h3>Prashikshan Aur Vikas</h3><p>Skill training aur career growth</p></div>
+      <div class="service-card"><div class="service-icon">❤️</div><h3>Parivar Sahayata</h3><p>Family support aur welfare seva</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title">Apne Liye Best Plan Chunein</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">₹19<span>/mo</span></div>
+        <ul class="plan-features">
+          <li>Helpline Support</li>
+          <li>Basic Documents Help</li>
+          <li>Community Access</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%;">Choose Plan</a>
+      </div>
+      <div class="price-card popular">
+        <div class="badge">Popular</div>
+        <div class="plan-name">Yogya</div>
+        <div class="plan-price">₹49<span>/mo</span></div>
+        <ul class="plan-features">
+          <li>All Basic Features</li>
+          <li>Legal Consultation</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%;">Choose Plan</a>
+      </div>
+      <div class="price-card">
+        <div class="plan-name">Worker Plus</div>
+        <div class="plan-price">₹349<span>/mo</span></div>
+        <ul class="plan-features">
+          <li>All Yogya Features</li>
+          <li>Medical Emergency Cover</li>
+          <li>Bank Account Assistance</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%;">Choose Plan</a>
+      </div>
+      <div class="price-card">
+        <div class="plan-name">Family</div>
+        <div class="plan-price">₹499<span>/mo</span></div>
+        <ul class="plan-features">
+          <li>All Plus Features</li>
+          <li>Family Welfare Support</li>
+          <li>Dedicated Manager</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%;">Choose Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-strip" id="contact">
+  <div class="container contact-flex">
+    <h3>Yogdaan Karne Aage Aayein 🤝</h3>
+    <a href="#" class="btn btn-lg">WhatsApp Par Message Karein</a>
+    <span>📞 Call Us: +971 62 123 4567</span>
+  </div>
+</section>
+
+<footer id="about">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>WORKER CARE</h4>
+        <p>Aapka saathi, har kadam par. Hum workers aur unke parivar ke liye samarpit hain.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Plans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Important Links</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul>
+          <li>+971 62 123 4567</li>
+          <li>support@workercare.ae</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Worker Care. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
