@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ - Worker Care</title>
+<style>
+  :root{--navy:#0b1e3d;--orange:#f5821f;--green:#25a955;--gray:#6b7280;--border:#e5e7eb;--lightblue:#eaf3ff;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:#1f2937;background:#fff;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:800px;margin:0 auto;padding:0 20px;}
+  header{background:#fff;border-bottom:1px solid var(--border);}
+  .navwrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0;max-width:1200px;margin:0 auto;padding-left:20px;padding-right:20px;}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;color:var(--navy);}
+  .logo .care{color:var(--orange);}
+  .btn{padding:9px 18px;border-radius:6px;font-size:13px;font-weight:700;border:none;cursor:pointer;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .page-hero{background:var(--navy);color:#fff;padding:40px 0;text-align:center;}
+  .page-hero h1{font-size:30px;font-weight:800;}
+  .page-hero p{color:#cbd5e1;margin-top:8px;font-size:14px;}
+  main{padding:50px 0 70px;}
+  .faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:14px;overflow:hidden;}
+  .faq-q{padding:16px 20px;font-weight:700;font-size:15px;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;}
+  .faq-q:hover{background:var(--lightblue);}
+  .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .25s ease, padding .25s ease;color:#374151;font-size:14px;line-height:1.7;}
+  .faq-item.open .faq-a{padding:0 20px 18px;max-height:300px;}
+  .faq-icon{transition:transform .2s;font-size:18px;color:var(--orange);}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  footer{background:#0a1830;color:#94a3b8;padding:24px 0;text-align:center;font-size:13px;}
+  .back-link{display:inline-block;margin-top:20px;color:var(--orange);font-weight:600;font-size:14px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navwrap">
+    <a href="index.html" class="logo">🛡️ WORKER<span class="care">CARE</span></a>
+    <a href="index.html" class="btn btn-primary">Back to Home</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1>Frequently Asked Questions</h1>
+  <p>Aapke sawalon ke jawab yahan milenge</p>
+</section>
+
+<main class="container">
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Worker Care kya hai? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Worker Care UAE mein rehne wale workers aur unke parivar ke liye ek sahayata platform hai. Hum helpline, kanooni salah, dastavez seva, aur emergency madad jaisi services pradaan karte hain.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Main kaise sign up kar sakta hoon? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Aap website par "Join Now" button par click karke apne liye sahi plan chunkar sign up kar sakte hain. Poora process kuch minute mein poora ho jaata hai.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Helpline kab uplabdh hai? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Hamari helpline 24 ghante, 7 din uplabdh hai. Aap kabhi bhi +971 62 123 4567 par call kar sakte hain.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Plans ka payment kaise hota hai? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Payment monthly subscription ke roop mein liya jaata hai. Aap card ya UAE ke local payment methods se pay kar sakte hain.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Kya main apna plan cancel kar sakta hoon? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Haan, aap kabhi bhi apna subscription cancel kar sakte hain. Cancel karne ke baad, aapka plan current billing cycle ke ant tak active rahega.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Kanooni salah kaise milegi? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Yogya ya usse upar ke plans mein, aap hamare partner legal advisors se consultation le sakte hain. Helpline par call karke appointment book karein.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Kya family members ko bhi seva mil sakti hai? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Haan, hamara Family plan poore parivar ke liye welfare support aur assistance shamil karta hai.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Agar mujhe emergency mein madad chahiye toh kya karoon? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Turant hamari 24x7 helpline par call karein: +971 62 123 4567. Hamari team turant aapki sahayata karegi.</div>
+  </div>
+
+  <p style="margin-top:30px;color:#6b7280;font-size:14px;">Aur koi sawal hai? <strong>support@workercare.ae</strong> par likhein ya humein call karein.</p>
+
+  <a href="index.html" class="back-link">← Wapas Home Par Jaayein</a>
+</main>
+
+<footer>© 2026 Worker Care. All Rights Reserved.</footer>
+
+</body>
+</html>
